@@ -1,2 +1,3 @@
 ansible_user: admin
-ansible_password: admin
+ansible_password: "{{ ansible_vault_password }}"
+

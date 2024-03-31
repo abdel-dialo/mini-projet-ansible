@@ -1,0 +1,4 @@
+---
+# vars file for webapp
+external_port: 80
+internal_port: 80

@@ -1,0 +1,25 @@
+---
+- name: Download pip script
+  get_url:
+      url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
+      dest: /tmp/get-pip.py
+- name: Install python-pip
+  ansible.builtin.command: python2.7 /tmp/get-pip.py
+
+- name: Install docker python
+  pip: name=docker-py
+
+- name: Start service docker, if not started
+  ansible.builtin.service:
+    name: docker
+    state: started
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: admin
+    groups: docker
+    append: true
+
+- name: Reset ssh connection to allow user changes to affect ansible user
+  ansible.builtin.meta:
+    reset_connection

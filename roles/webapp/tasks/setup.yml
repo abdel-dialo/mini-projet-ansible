@@ -1,0 +1,11 @@
+---
+- name: Install EPEL repo
+  package: name={{item}} state=present
+  loop:
+    - epel-release
+    - git
+    - wget
+    - curl
+  fail:
+    msg: distribution must be centos
+  when: ansible_distribution != "CentOS"

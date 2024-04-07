@@ -1,31 +1,42 @@
-Role Name
+webapp
 =========
 
-A brief description of the role goes here.
+Apache installation using docker
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Centos 7
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| name                    | type   | description                                                                       | mandatory |
+|-------------------------|--------|----------------------------------------------------------------------------- -----|------------|
+| `external_port`         | int    | External port the httpd docker container                                           |   yes     |
+| `internal_port`         | int    | Internal port the httpd docker container                                           |   yes     |
+| `system_user`           | string | The system user of remote nodes                                                    |   yes     |
+| `template_file`         | string |template name use for the index.html file which will be mounted in the container    |   yes     |
+| `ip_prod`               | int    |IP ansible_host client2 used by the test.yml playbook                               |   yes     |
+| `ip_staging`            | int    |IP ansible_host client1 used by the test.yml playbook                               |   yes     |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+n/a
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```yaml
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- name: "Apache installation using docker"
+  hosts: prod
+  become: true
+  roles:
+    - webapp
+
+```
 
 License
 -------
@@ -34,5 +45,5 @@ BSD
 
 Author Information
 ------------------
+https://github.com/abdel-dialo/mini-projet-ansible
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).

@@ -2,7 +2,12 @@
 - name: "Apache installation using docker"
   hosts: prod
   become: true
-  vars_files:
-    - ./files/secrets/credentials-vault
   roles:
     - webapp
+
+- name: "Apache installation using docker"
+  hosts: staging
+  become: true
+  roles:
+    - webapp
+

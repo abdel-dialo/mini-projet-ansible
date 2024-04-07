@@ -1,11 +1,15 @@
 ---
 - name: include setup ans install-docker task
-  include_tasks: "setup.yml"
-  include_tasks: "install-docker.yml"
+  include_tasks: "{{ item }}"
+  loop:
+    - pre-setup.yml
+    - install-docker.yml
+- name: Force  notified handlers to run at this point
+  ansible.builtin.meta: flush_handlers
 - name: create index.html template
   ansible.builtin.template:
-    src: ./templates/index.html.j2
-    dest: ./index.html
+    src: "{{template_file}}"
+    dest: /home/{{system_user}}/index.html
 - name: Create Apache container
   docker_container:
     name: webapp
@@ -14,5 +18,4 @@
     ports:
       - "{{external_port}}:{{internal_port}}"
     volumes:
-      - ./index.html:/usr/local/apache2/htdocs/index.html
-
+      - /home/{{system_user}}/index.html:/usr/local/apache2/htdocs/index.html

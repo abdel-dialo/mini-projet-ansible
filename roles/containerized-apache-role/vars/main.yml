@@ -1,0 +1,6 @@
+---
+# vars file for containerized-apache
+external_port: 80
+internal_port: 80
+system_user: centos
+template_file: index.html.j2

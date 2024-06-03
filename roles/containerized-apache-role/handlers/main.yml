@@ -1,0 +1,7 @@
+---
+# handlers file for containerized-apache
+- name: start_service_docker
+  ansible.builtin.service:
+    name: docker
+    state: started
+

@@ -3,11 +3,11 @@
   hosts: prod
   become: true
   roles:
-    - webapp
+    - containerized-apache-role
 
 - name: "Apache installation using docker"
   hosts: staging
   become: true
   roles:
-    - webapp
+    - containerized-apache-role
 

@@ -53,7 +53,7 @@ The variables used in this role are defined in the files defaults/main.yml and v
 # Test the containerized-apache-role
  Go to project root
  
- `ansible-playbook roles/webapp/tests/test.yml`
+ `ansible-playbook roles/webappcontainerized-apache-role/tests/test.yml `
   ![alt text](images/image-1.png)
 `curl http://localhost  | grep bienvenue`
   ![alt text](images/image.png)

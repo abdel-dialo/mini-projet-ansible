@@ -1,5 +1,0 @@
----
-# defaults file for webapp
-external_port: 80
-internal_port: 80
-system_user: admin

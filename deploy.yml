@@ -1,12 +1,13 @@
 ---
+
 - name: "Apache installation using docker"
-  hosts: prod
+  hosts: staging
   become: true
   roles:
     - containerized-apache-role
 
 - name: "Apache installation using docker"
-  hosts: staging
+  hosts: prod
   become: true
   roles:
     - containerized-apache-role
